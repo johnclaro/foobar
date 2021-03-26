@@ -1,6 +1,5 @@
 #!/usr/bin/env python2
 
-
 def solution(sentence):
     braille = setup()
     output = ''
@@ -9,8 +8,8 @@ def solution(sentence):
             output += '000001'
         elif letter.isspace():
             output += '000000'
-        else:
-            output += braille[letter]
+        if not letter.isspace():
+            output += braille[letter.lower()]
     return output
 
 
@@ -33,3 +32,5 @@ def setup():
 
 if __name__ == '__main__':
     solution('code')
+    solution('The quick brown fox jumps over the lazy dog')
+    solution('Braille')
