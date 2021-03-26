@@ -20,3 +20,6 @@ Do you wish to proceed and start the timer on your first challenge?
 [Y]es or [N]o: Y
 Requesting challenge...
 Commander Lambda sure is a task-master, aren't they? You're being worked to the bone!
+
+## Query
+view-source:https://www.google.com/search?q=python+list+comprehension&ei=RTFdYK2jDdOi1fAPzPyd8Ac&oq=python+list+comprehension&gs_lcp=Cgdnd3Mtd2l6EAxQAFgAYMkMaABwAngAgAFaiAFakgEBMZgBAKoBB2d3cy13aXrAAQE&sclient=gws-wiz&ved=0ahUKEwjt2bmI4MzvAhVTURUIHUx-B34Q4dUDCA0
