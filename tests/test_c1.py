@@ -1,6 +1,6 @@
 import pytest
 
-from braille import solution
+from c1 import solution
 
 
 @pytest.fixture
