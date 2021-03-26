@@ -1,9 +1,9 @@
 #!/usr/bin/env python2
 
-def solution(sentence):
+def solution(s):
     braille = init_braille()
     output = ''
-    for letter in sentence:
+    for letter in s:
         if letter.isupper():
             output += '000001'
         letter = letter.lower()
