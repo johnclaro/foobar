@@ -62,7 +62,7 @@ def test_4(braille):
 
 def test_5(braille):
     output = solution('A')
-    expected = f"000001{braille['a']}"
+    expected = '000001%s'.format(braille['a'])
     assert output == expected
 
 
