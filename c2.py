@@ -17,12 +17,12 @@ def solution(src, dest):
         move_x, move_y = move
         src_x, src_y = board[src]
         dest_x, dest_y = board[dest]
-        diff_x = move_x - src_x
-        diff_y = move_y - src_y
+        diff_x = move_x + src_x
+        diff_y = move_y + src_y
         if (0 < diff_x < 8) and (0 > diff_y > -8):
             diff = (diff_x, diff_y)
             for cell, coordinate in board.items():
-                if coordinate == diff:
+                if coordinate == diff and coordinate == board[dest]:
                     output += 1
     return output
 
@@ -39,4 +39,5 @@ def init_board(rows, cols):
 
 
 if __name__ == '__main__':
-    solution(0, 1)
+    output = solution(0, 1)
+    print output
