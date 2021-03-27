@@ -2,8 +2,10 @@ def solution(src, dest):
     rows, cols = (8,8)
     board = init_board(rows, cols)
     graph = init_graph(board)
-    for k,v in graph.items():
-        print k, ':', v
+    visits = search(graph, src, dest, [])
+    for k, v in graph.items():
+        print k, v
+    print visits
     return 0
 
 
@@ -29,13 +31,22 @@ def init_graph(board):
     for point, node in board.items():
         for move in moves:
             x, y = move[0] + point[0], move[1] + point[1]
-            if (0 < x < 8) and (0 > y > -8):
+            if (0 <= x < 8) and (0 >= y > -8):
                 edge = board[(x, y)]
                 try:
                     graph[node].append(edge)
                 except KeyError:
                     graph[node] = [edge]
     return graph
+
+
+def search(graph, src, dest, visits):
+    if src not in visits:
+        visits.append(src)
+        for edge in graph[src]:
+            search(graph, edge, dest, visits)
+    return visits
+
 
 if __name__ == '__main__':
     solution(19, 36)
