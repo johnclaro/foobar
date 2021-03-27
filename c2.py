@@ -1,45 +1,41 @@
-from collections import namedtuple
-
-Node = namedtuple('Node', ['x', 'y'])
-
-
 def solution(src, dest):
     rows, cols = (8,8)
     board = init_board(rows, cols)
-    edges = generate_edges(board)
+    graph = init_graph(board)
+    for k,v in graph.items():
+        print k, ':', v
     return 0
 
 
 def init_board(rows, cols):
     board = {}
-    square = 0
+    node = 0
     for col in range(cols):
         for row in range(rows):
-            node = Node(row, -col)
-            board[node] = square
-            square += 1
+            point = (row, -col)
+            board[point] = node
+            node += 1
     return board
 
 
-def generate_edges(board):
-    edges = {}
+def init_graph(board):
+    graph = {}
     moves = (
-            Node(-1, 2), Node(1, 2),
-        Node(-2, 1),            Node(2, 1),
-        Node(-2, -1),            Node(2, -1),
-            Node(-2, -2), Node(1, -2),
+            (-1, 2), (1, 2),
+        (-2, 1),            (2, 1),
+        (-2, -1),            (2, -1),
+            (-2, -2), (1, -2),
     )
-    for node in board.keys():
+    for point, node in board.items():
         for move in moves:
-            x, y = move.x + node.x, move.y + node.y
+            x, y = move[0] + point[0], move[1] + point[1]
             if (0 < x < 8) and (0 > y > -8):
-                edge = (x, y)
+                edge = board[(x, y)]
                 try:
-                    edges[node].append(edge)
+                    graph[node].append(edge)
                 except KeyError:
-                    edges[node] = [edge]
-    return edges
+                    graph[node] = [edge]
+    return graph
 
 if __name__ == '__main__':
-    output = solution(19, 36)
-    print output
+    solution(19, 36)
