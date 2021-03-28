@@ -2,11 +2,9 @@ def solution(src, dest):
     rows, cols = (8, 8)
     board = init_board(rows, cols)
     graph = init_graph(board)
-    visits = search(graph, src, dest, [])
-    for k, v in graph.items():
-        print k, v
-    print visits
-    return 0
+    path = search(graph, src, dest)
+    output = len(path) - 1
+    return output
 
 
 def init_board(rows, cols):
@@ -44,13 +42,21 @@ def init_graph(board):
     return graph
 
 
-def search(graph, node, dest, visits):
-    if node not in visits:
-        visits.append(node)
-        for edge in graph[node]:
-            search(graph, edge, dest, visits)
-    return visits
+def search(graph, start, end, path=[]):
+    queue = []
+    queue.append([start])
+    while queue:
+        path = queue.pop(0)
+        node = path[-1]
+        if node == end:
+            return path
+        for adjacent in graph.get(node, []):
+            new_path = list(path)
+            new_path.append(adjacent)
+            queue.append(new_path)
+    return queue
 
 
 if __name__ == '__main__':
-    solution(19, 36)
+    output = solution(19, 36)
+    print output
