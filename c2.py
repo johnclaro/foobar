@@ -3,6 +3,16 @@ from collections import deque
 
 
 def init_board(rows, cols):
+    """Initializes dictionary with coordinates and its square number.
+
+    Args:
+        rows: An integer that represents the x-axis.
+        cols: An integer that represents the y-axis.
+
+    Returns:
+        A dict mapping keys to the corresponding coordinate of a node
+        represented as a tuple. Each row is represented with its square number.
+    """
     board = {}
     node = 0
     for y in range(cols):
@@ -13,8 +23,19 @@ def init_board(rows, cols):
 
 
 def init_graph(board):
+    """Initializes dictionary with nodes and its adjacent nodes that can be
+    travelled to using a chess knight's moves.
+
+    Args:
+        board: The chessboard as a dictionary.
+
+    Returns:
+        A dict mapping keys to the corresponding coordinate of a node
+        represented as a tuple. Each row is represented as a list the adjacent
+        nodes.
+    """
     graph = {}
-    lshapes = (
+    moves = (
         (-1, 2),
         (-2, 1),
         (1, 2),
@@ -25,9 +46,9 @@ def init_graph(board):
         (1, -2),
     )
     for point, node in board.items():
-        for lshape in lshapes:
-            x = lshape[0] + point[0]
-            y = lshape[1] + point[1]
+        for move in moves:
+            x = move[0] + point[0]
+            y = move[1] + point[1]
             if 0 <= x < 8 and 0 >= y > -8:
                 adjacent = board[x, y]
                 try:
@@ -38,6 +59,16 @@ def init_graph(board):
 
 
 def find_shortest_path(graph, src, dest):
+    """Finds the shortest path between two nodes using breadth-first search.
+
+    Args:
+        src: An integer representing the source node.
+        dest: An integer representing the destination node.
+
+    Returns:
+        A list containing nodes that can be travelled to from the source node
+        to the destination node
+    """
     root = [[src]]
     queue = deque(root)
     visited = set()
@@ -53,7 +84,6 @@ def find_shortest_path(graph, src, dest):
         elif node not in visited:
             # Loop adjacent node then construct new path and add to queue
             for adjacent_node in graph[node]:
-                # TODO: Why is this list(path) and not [path]?
                 paths = list(path)
                 paths.append(adjacent_node)
                 queue.append(paths)
@@ -63,6 +93,17 @@ def find_shortest_path(graph, src, dest):
 
 
 def solution(src, dest):
+    """Starts finding the solution to the dont-get-volunteered challenge.
+
+    Args:
+        src: An integer representing the source node.
+        dest: An integer representing the destination node.
+
+    Returns:
+        An integer representing the smallest number of moves it will take to
+        travel between the source square to the destination square using a
+        chess knight's moves.
+    """
     rows, cols = (8, 8)
     board = init_board(rows, cols)
     graph = init_graph(board)
