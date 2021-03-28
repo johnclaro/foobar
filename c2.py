@@ -1,3 +1,4 @@
+import time
 from collections import deque
 
 
@@ -61,9 +62,11 @@ def find_shortest_path(graph, start, end):
 
 
 if __name__ == '__main__':
+    start_time = time.time()
     xs = range(64)
     ys = range(64)
     outputs = []
     for x in xs:
         for y in ys:
             output = solution(x, y)
+    print("--- %s seconds ---" % (time.time() - start_time))
