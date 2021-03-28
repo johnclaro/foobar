@@ -3,14 +3,14 @@ from collections import deque
 
 def solution(src, dest):
     rows, cols = (8, 8)
-    board = init_board(rows, cols)
-    graph = init_graph(board)
+    board = initialize_board(rows, cols)
+    graph = initialize_graph(board)
     path = find_shortest_path(graph, src, dest)
     output = len(path) - 1
     return output
 
 
-def init_board(rows, cols):
+def initialize_board(rows, cols):
     board = {}
     node = 0
     for col in range(cols):
@@ -21,7 +21,7 @@ def init_board(rows, cols):
     return board
 
 
-def init_graph(board):
+def initialize_graph(board):
     graph = {}
     moves = (
         (-1, 2),
