@@ -1,28 +1,19 @@
 from c2 import solution, init_board, init_graph
 
 
-def test_1():
+def test_given_solutions():
     assert solution(0, 1) == 3
-
-
-def test_2():
     assert solution(19, 36) == 1
 
 
-def test_3():
-    assert solution(0, 0) == 1
-
-
-def test_4():
-    assert solution(0, 63) == 6
-
-
-def test_5():
-    assert solution(0, 56) == 5
-
-
-def test_6():
-    assert solution(0, 7) == 5
+def test_corners():
+    for xy in [
+        (0, 63),
+        (63, 0),
+        (56, 7),
+        (7, 56),
+    ]:
+        assert solution(xy[0], xy[1]) == 6
 
 
 def test_graph():

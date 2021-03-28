@@ -6,6 +6,7 @@ def solution(src, dest):
     board = init_board(rows, cols)
     graph = init_graph(board)
     path = find_shortest_path(graph, src, dest)
+    print path
     output = len(path) - 1
     return output
 
@@ -61,4 +62,7 @@ def find_shortest_path(graph, start, end):
 
 
 if __name__ == '__main__':
-    solution(0, 1)
+    output = solution(7, 56)
+    print output
+    output = solution(56, 7)
+    print output
