@@ -1,5 +1,5 @@
 def solution(src, dest):
-    rows, cols = (8,8)
+    rows, cols = (8, 8)
     board = init_board(rows, cols)
     graph = init_graph(board)
     visits = search(graph, src, dest, [])
@@ -23,10 +23,14 @@ def init_board(rows, cols):
 def init_graph(board):
     graph = {}
     moves = (
-            (-1, 2), (1, 2),
-        (-2, 1),            (2, 1),
-        (-2, -1),            (2, -1),
-            (-2, -2), (1, -2),
+        (-1, 2),
+        (1, 2),
+        (-2, 1),
+        (2, 1),
+        (-2, -1),
+        (2, -1),
+        (-2, -2),
+        (1, -2),
     )
     for point, node in board.items():
         for move in moves:
@@ -40,10 +44,10 @@ def init_graph(board):
     return graph
 
 
-def search(graph, src, dest, visits):
-    if src not in visits:
-        visits.append(src)
-        for edge in graph[src]:
+def search(graph, node, dest, visits):
+    if node not in visits:
+        visits.append(node)
+        for edge in graph[node]:
             search(graph, edge, dest, visits)
     return visits
 
