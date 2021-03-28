@@ -10,7 +10,7 @@ def test_2():
 
 
 def test_3():
-    assert solution(0, 0) == 0
+    assert solution(0, 0) == 1
 
 
 def test_4():

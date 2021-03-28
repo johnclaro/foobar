@@ -3,8 +3,10 @@ def solution(src, dest):
     board = init_board(rows, cols)
     graph = init_graph(board)
     path = find_shortest_path(graph, src, dest)
-    print path
-    output = len(path) - 1
+    if len(path) == 1:
+        output = 1
+    else:
+        output = len(path) - 1
     return output
 
 
@@ -43,7 +45,7 @@ def init_graph(board):
     return graph
 
 
-def find_shortest_path(graph, start, end, path=[]):
+def find_shortest_path(graph, start, end):
     queue = []
     queue.append([start])
     while queue:
@@ -59,4 +61,4 @@ def find_shortest_path(graph, start, end, path=[]):
 
 
 if __name__ == '__main__':
-    solution(0, 56)
+    solution(0, 1)
