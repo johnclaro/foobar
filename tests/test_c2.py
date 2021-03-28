@@ -19,6 +19,6 @@ def test_corners():
 def test_graph():
     rows, cols = (8, 8)
     board = init_board(rows, cols)
-    graph = init_graph(board)
+    graph = init_graph(board, rows, cols)
     assert graph[0] == [10, 17]
     assert graph[10] == [0, 4, 16, 25, 20, 27]

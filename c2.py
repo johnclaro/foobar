@@ -6,8 +6,8 @@ def init_board(rows, cols):
     """Initializes dictionary with coordinates and its square number.
 
     Args:
-        rows: An integer that represents the x-axis.
-        cols: An integer that represents the y-axis.
+        rows: An integer that represents the number of rows of a board.
+        cols: An integer that represents the number of columns of a board.
 
     Returns:
         A dict mapping keys to the corresponding coordinate of a node
@@ -22,12 +22,14 @@ def init_board(rows, cols):
     return board
 
 
-def init_graph(board):
+def init_graph(board, rows, cols):
     """Initializes dictionary with nodes and its adjacent nodes that can be
     travelled to using a chess knight's moves.
 
     Args:
         board: The chessboard as a dictionary.
+        rows: An integer that represents the number of rows of a board.
+        cols: An integer that represents the number of columns of a board.
 
     Returns:
         A dict mapping keys to the corresponding coordinate of a node
@@ -45,11 +47,16 @@ def init_graph(board):
         (2, -1),
         (1, -2),
     )
+    # Loop through all possible points of the board
     for point, node in board.items():
+        # Loop through all possible chess knight moves
         for move in moves:
+            # Calculate difference between possible move and the current point
             x = move[0] + point[0]
             y = move[1] + point[1]
-            if 0 <= x < 8 and 0 >= y > -8:
+            # Only allow coordinates that are not outside the chessboard
+            if 0 <= x < rows and 0 >= y > -cols:
+                # Get the adjacent node's square number
                 adjacent = board[x, y]
                 try:
                     graph[node].append(adjacent)
@@ -62,6 +69,9 @@ def find_shortest_path(graph, src, dest):
     """Finds the shortest path between two nodes using breadth-first search.
 
     Args:
+        graph: A dict mapping keys to the corresponding coordinate of a node
+            represented as a tuple. Each row is represented with its square
+            number.
         src: An integer representing the source node.
         dest: An integer representing the destination node.
 
@@ -70,6 +80,7 @@ def find_shortest_path(graph, src, dest):
         to the destination node
     """
     root = [[src]]
+    # dequeue.popleft() has O(n) complexity whereas list.pop(0) has O(n)
     queue = deque(root)
     visited = set()
     while queue:
@@ -77,7 +88,7 @@ def find_shortest_path(graph, src, dest):
         path = queue.popleft()
         # Get the last node in the path
         node = path[-1]
-        # Stop if destination is reached
+        # Return shortest path if destination is reached
         if node == dest:
             return path
         # Check current node if visited in order not to recheck it
@@ -106,7 +117,7 @@ def solution(src, dest):
     """
     rows, cols = (8, 8)
     board = init_board(rows, cols)
-    graph = init_graph(board)
+    graph = init_graph(board, rows, cols)
     path = find_shortest_path(graph, src, dest)
     output = len(path) - 1
     return output
