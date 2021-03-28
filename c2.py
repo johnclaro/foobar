@@ -46,19 +46,28 @@ def init_graph(board):
     return graph
 
 
-def find_shortest_path(graph, start, end):
-    queue = deque()
-    queue.append([start])
-    while queue:
-        path = queue.popleft()
+def find_shortest_path(graph, src, dest):
+    root = [[src]]
+    nodes = deque(root)
+    visited = set()
+    while nodes:
+        # Get the first path in the nodes
+        path = nodes.popleft()
+        # Get the last node in the path
         node = path[-1]
-        if node == end:
+        # Stop if destination is reached
+        if node == dest:
             return path
-        for adjacent in graph[node]:
-            new_path = list(path)
-            new_path.append(adjacent)
-            queue.append(new_path)
-    return queue
+        # Check current node if visited in order not to recheck it
+        elif node not in visited:
+            # Loop adjacent nodes then construct new path and add to nodes
+            for adj_node in graph[node]:
+                paths = list(path)
+                paths.append(adj_node)
+                nodes.append(paths)
+            # Mark the node as visited
+            visited.add(node)
+    return nodes
 
 
 if __name__ == '__main__':
