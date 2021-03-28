@@ -9,6 +9,22 @@ def test_2():
     assert solution(19, 36) == 1
 
 
+def test_3():
+    assert solution(0, 0) == 0
+
+
+def test_4():
+    assert solution(0, 63) == 6
+
+
+def test_5():
+    assert solution(0, 56) == 5
+
+
+def test_6():
+    assert solution(0, 7) == 5
+
+
 def test_graph():
     rows, cols = (8, 8)
     board = init_board(rows, cols)

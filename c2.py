@@ -2,7 +2,8 @@ def solution(src, dest):
     rows, cols = (8, 8)
     board = init_board(rows, cols)
     graph = init_graph(board)
-    path = search(graph, src, dest)
+    path = find_shortest_path(graph, src, dest)
+    print path
     output = len(path) - 1
     return output
 
@@ -42,7 +43,7 @@ def init_graph(board):
     return graph
 
 
-def search(graph, start, end, path=[]):
+def find_shortest_path(graph, start, end, path=[]):
     queue = []
     queue.append([start])
     while queue:
@@ -58,5 +59,4 @@ def search(graph, start, end, path=[]):
 
 
 if __name__ == '__main__':
-    output = solution(19, 36)
-    print output
+    solution(0, 56)
