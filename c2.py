@@ -1,4 +1,3 @@
-import time
 from collections import deque
 
 
@@ -124,6 +123,7 @@ def solution(src, dest):
 
 
 if __name__ == '__main__':
+    import time
     start_time = time.time()
     xs = range(64)
     ys = range(64)
