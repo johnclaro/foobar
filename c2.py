@@ -7,8 +7,6 @@ def solution(src, dest):
     graph = init_graph(board)
     path = find_shortest_path(graph, src, dest)
     output = len(path) - 1
-    if output == 1:
-        print '(%s, %s): %s | %s' % (x, y, output, path)
     return output
 
 
