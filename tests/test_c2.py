@@ -21,4 +21,4 @@ def test_graph():
     board = init_board(rows, cols)
     graph = init_graph(board)
     assert graph[0] == [10, 17]
-    assert graph[10] == [0, 4, 16, 20, 25, 27]
+    assert graph[10] == [0, 4, 16, 25, 20, 27]
