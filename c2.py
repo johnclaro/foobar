@@ -1,12 +1,12 @@
+from collections import deque
+
+
 def solution(src, dest):
     rows, cols = (8, 8)
     board = init_board(rows, cols)
     graph = init_graph(board)
     path = find_shortest_path(graph, src, dest)
-    if len(path) == 1:
-        output = 1
-    else:
-        output = len(path) - 1
+    output = len(path) - 1
     return output
 
 
@@ -46,14 +46,14 @@ def init_graph(board):
 
 
 def find_shortest_path(graph, start, end):
-    queue = []
+    queue = deque()
     queue.append([start])
     while queue:
-        path = queue.pop(0)
+        path = queue.popleft()
         node = path[-1]
         if node == end:
             return path
-        for adjacent in graph.get(node, []):
+        for adjacent in graph[node]:
             new_path = list(path)
             new_path.append(adjacent)
             queue.append(new_path)
