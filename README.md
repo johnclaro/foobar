@@ -1,4 +1,5 @@
 # foobar
 
-[Google Foobar](https://foobar.withgoogle.com) is Google's secret hiring challenge.
+Currently working through [Google Foobar](https://foobar.withgoogle.com).
+It's Google's secret hiring challenge only accessible through an invitation.
 
