@@ -79,7 +79,7 @@ def find_shortest_path(graph, src, dest):
         to the destination node
     """
     root = [[src]]
-    # dequeue.popleft() has O(n) complexity whereas list.pop(0) has O(n)
+    # dequeue.popleft() has O(1) complexity whereas list.pop(0) has O(n)
     queue = deque(root)
     visited = set()
     while queue:
