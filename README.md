@@ -1,5 +1,5 @@
 # foobar
 
-Currently working through [Google Foobar](https://foobar.withgoogle.com)
-which is Google's invite-only secret coding challenge.
+I got invited to do the [Google Foobar](https://foobar.withgoogle.com)
+which is a Google invite-only coding challenge.
 
