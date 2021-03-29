@@ -28,3 +28,8 @@ def init_braille():
         letter = sentence[index]
         braille[letter] = word
     return braille
+
+
+if __name__ == '__main__':
+    output = solution('code')
+    print output
