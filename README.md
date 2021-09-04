@@ -6,7 +6,7 @@ which is a Google invite-only coding challenge.
 ## Progress
 
 I'm not doing these challenges at the moment as they take a lot of time to 
-complete and are mentally exhausting (they get exponentially harder as the levels increase)
+complete and are mentally exhausting (they get exponentially harder as the levels increase).
 
 There are no deadlines and I can resume whenever so I want to do these 
 challenges again with my undivided attention.
