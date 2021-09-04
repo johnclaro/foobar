@@ -7,5 +7,5 @@ which is a Google invite-only coding challenge.
 
 I'm not doing these challenges at the moment as they take a lot of time to complete.
 
-As there are no deadlines when to finish them and that I can resume whenever, 
+As there are no deadlines and I can resume whenever, 
 I want to give these challenges my 100% effort without looking up the answers online as that would be cheating.
